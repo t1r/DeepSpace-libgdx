@@ -1,30 +1,19 @@
 package com.mygdx.game
 
-import com.badlogic.gdx.ApplicationAdapter
+import com.badlogic.gdx.Game
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.mygdx.game.constants.GameConst.GAME_TAG
+import com.mygdx.game.ui.space.SpaceScreen
 
-class DeepSpaceGame : ApplicationAdapter() {
-    private lateinit var batch: SpriteBatch
-    lateinit var img: Texture
+class DeepSpaceGame : Game() {
 
     override fun create() {
-        batch = SpriteBatch()
-        img = Texture("badlogic.jpg")
-    }
+        Gdx.app.log(GAME_TAG, "created")
 
-    override fun render() {
-        Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-        batch.begin()
-        batch.draw(img, 0f, 0f)
-        batch.end()
+        setScreen(SpaceScreen())
     }
 
     override fun dispose() {
-        batch.dispose()
-        img.dispose()
+        super.dispose()
     }
 }
